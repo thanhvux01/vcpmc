@@ -6,26 +6,15 @@
     border: 0;
     box-sizing: border-box;
     font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'Montserrat';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
 
 /*FONT FACE*/
-  @font-face {
-      font-family: FeatherBold;
-      src: url(./assets/font/Feather.ttf);
-    }
-    @font-face {
-      font-family: Fredoka;
-      src: url(./assets/font/FredokaOneRegular.otf);
-    }
-    @font-face {
-      font-family: PhilosopherBold;
-      src: url(./assets/font/Philosopher-Bold.otf);
-    }
-    @font-face {
-      font-family: PhilosopherRegular;
-      src: url(./assets/font/Philosopher-Regular.otf);
-    }
     @font-face {
       font-family: SFBOLD;
       src: url(./assets/font/SanFranciscoDisplay-Bold.otf);
@@ -37,6 +26,18 @@
     @font-face {
       font-family: SFREGULAR;
       src: url(./assets/font/SanFranciscoDisplay-Regular.otf);
+    }
+    @font-face {
+      font-family: Montserrat;
+      src: url(./assets/font/Montserrat-Medium.ttf);
+    }
+    @font-face {
+      font-family: MontserratBold;
+      src: url(./assets/font/Montserrat-Bold.ttf);
+    }
+    @font-face {
+      font-family: MontserratExtra;
+      src: url(./assets/font/Montserrat-ExtraBold.ttf);
     }
 
 /*COLOR VAR*/
