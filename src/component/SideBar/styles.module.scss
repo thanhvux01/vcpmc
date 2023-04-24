@@ -3,13 +3,21 @@
 .container{
     display: flex;
     flex-direction: column;
-    height: 100vh;
     min-width: 170px;
-    background-color: #020220;
-    position: fixed;
-    bottom: 0;
-    top:0;
-    left: 0;
-    color: red;
+    background-color: #020220;  
+    align-items: center;
     border-radius: 0px 24px 24px 0px;
+    .logo-holder{
+        >img{
+            width: 96px;
+            height: 96px;
+            margin-top: 40px;
+        }
+    }
+    .feature-list-item{
+        margin-top: 110px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
 }

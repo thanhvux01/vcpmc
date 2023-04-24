@@ -1,14 +1,15 @@
 import React from 'react'
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
+import Header from '../Header';
 let cx = classNames.bind(styles);
 
-const SelectLang = () => {
+const ContractContent = () => {
   return (
-    <div className={cx('wrapper')}>
-        
+    <div className={cx('container')}>
+         <Header/>
     </div>
   )
 }
 
-export default SelectLang
+export default ContractContent

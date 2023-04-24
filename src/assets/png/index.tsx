@@ -1,3 +1,4 @@
 import logo from './vcpmc_logo.png';
-
-export {logo};
+import bglogo from './logo.png';
+import vietnam from './vietnam.png'
+export {logo,bglogo,vietnam};

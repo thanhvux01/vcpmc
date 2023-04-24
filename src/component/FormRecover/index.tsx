@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { logo } from '../../assets/png';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from '../../firebase';
-import Input from '../CustomInput';
+import Input from '../CustomInput/Input';
 import { Button } from '@mui/material';
 let cx = classNames.bind(styles);
 

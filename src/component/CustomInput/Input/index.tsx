@@ -1,7 +1,7 @@
 import React , {ChangeEvent, useState} from 'react'
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
-import { eye } from '../../assets/svg';
+import { eye } from '../../../assets/svg';
 
 let cx = classNames.bind(styles);
 
@@ -11,10 +11,11 @@ type inputProp = {
      outline? : string,
      icon? : string,
      label? : string,
+     defaultValue? : string,
      onChange? : (e : ChangeEvent<HTMLInputElement>) => void,
 }
 
-const Input = ({className , variant , icon , label , onChange , outline} : inputProp) => {
+const Input = ({className , variant , icon , label , onChange , outline , defaultValue} : inputProp) => {
    const [pwd,setPwd] = useState('password');
    const handleVisible = () => {
        pwd=='password' ? setPwd('text') : setPwd('password');
@@ -37,13 +38,22 @@ const Input = ({className , variant , icon , label , onChange , outline} : input
         <label  htmlFor="rember">{label}</label>
        </div>
      )
+  }else if(variant=='blocked'){
+    return (
+      <div className={cx('input-wrapper')} >
+      <label>{label}</label>
+      <div>
+      <input disabled className={cx('input',className,'blocked')} defaultValue={defaultValue}></input>
+      </div>
+      </div>
+   )
   }
   else{
     return (
         <div className={cx('input-wrapper')} >
         <label>{label}</label>
         <div style={{border:`1px solid ${outline}`}}>
-        <input type='text' className={cx('input',className)} onChange={onChange} style={{borderColor:outline}}></input>
+        <input type='text' className={cx('input',className)} onChange={onChange} style={{borderColor:outline}} defaultValue={defaultValue}></input>
         </div>
         </div>
     )

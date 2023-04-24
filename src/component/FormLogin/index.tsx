@@ -2,10 +2,9 @@ import React, { ChangeEvent, useState } from 'react'
 import styles from'./styles.module.scss';
 import classNames from 'classnames/bind';
 import { logo } from '../../assets/png';
-import Input from '../CustomInput';
+import Input from '../CustomInput/Input';
 import {signInWithEmailAndPassword } from "firebase/auth";
 import { useSelector,useDispatch } from 'react-redux';
-import { RootState } from '../../state/store';
 import { useNavigate } from 'react-router';
 import Button from '@mui/material/Button';
 import { auth } from '../../firebase';
@@ -33,8 +32,6 @@ const FormLog = ( ) => {
       .then((userCredential) => {
         
         const user = userCredential.user;
-        console.log(user);
-        dispatch(SetUser({email:user.email+"",photoURL:user.photoURL+"",uid:user.uid+""}));
         navigate('/');
       })
       .catch((error) => {

@@ -1,0 +1,16 @@
+
+
+.wrapper{
+
+  display: flex;
+  flex-direction: column;
+  min-height: 72px;
+  align-items: center;
+  cursor: pointer;
+
+  >label{
+    color: #C8C8DB;
+    font-family: Montserrat;
+    font-size: 14px;
+  }
+}

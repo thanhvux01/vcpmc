@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
-import SelectLang from '../../component/SelectLang';
+import SelectLang from '../../component/CustomSelect';
 import FormRecover from '../../component/FormRecover';
 import { Link } from 'react-router-dom';
 let cx = classNames.bind(styles);
