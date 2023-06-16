@@ -8,7 +8,9 @@ import { useSelector,useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import Button from '@mui/material/Button';
 import { auth } from '../../firebase';
-import { SetUser } from '../../state/features/authSlice';
+import { getUserInfo } from '../../state/features/authSlice';
+import { AppDispatch } from '../../state/store';
+
 
 
 let cx = classNames.bind(styles);
@@ -16,7 +18,7 @@ const FormLog = ( ) => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [error,setError] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const handleEmail = (e : ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -32,6 +34,9 @@ const FormLog = ( ) => {
       .then((userCredential) => {
         
         const user = userCredential.user;
+        dispatch(getUserInfo(user.uid));
+        
+  
         navigate('/');
       })
       .catch((error) => {

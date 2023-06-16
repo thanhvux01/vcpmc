@@ -11,13 +11,13 @@ import { User } from "./type/user";
 const firebaseConfig = {
   apiKey: "AIzaSyBCklEkE_3sUHcfHYRIF9mwMXS5VBH4IqU",
   authDomain: "premium-apex-349213.firebaseapp.com",
+  databaseURL: "https://premium-apex-349213-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "premium-apex-349213",
   storageBucket: "premium-apex-349213.appspot.com",
   messagingSenderId: "239802001371",
   appId: "1:239802001371:web:c69e619bf22a9f77cb69fe",
   measurementId: "G-BNJSFM82X3"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();

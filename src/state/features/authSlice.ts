@@ -1,40 +1,59 @@
 import { Phone } from "@mui/icons-material";
 import {signInWithEmailAndPassword } from "firebase/auth";
-import {createSlice,PayloadAction}  from "@reduxjs/toolkit"
-import { auth } from "../../firebase";
-type User = {
-        email:string,
-        uid:string,
-        photoURL:string,
-}
-type Auth = {
-    email:string,
-    password:string
-}
+import {createAsyncThunk, createSlice,PayloadAction}  from "@reduxjs/toolkit"
+import { auth, db } from "../../firebase";
+import { User } from "../../type/user";
+import { collection, doc, endAt, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
+
 const initialState : User= {
-      email:"",
-      uid:"",
-      photoURL:""
+    Email:"",
+    FirstName:"",
+    Role:"",
+    LastName:"",
+    state:false,
 }
+
+export const getUserInfo = createAsyncThunk('auth/getuser', async (uid:string)=> {
+   
+    const q = query(collection(db, "users"), where("uid", "==", uid));
+    const docSnap = await getDocs(q);
+    let temp : User = {state:false};
+    docSnap.forEach(doc=>{
+         temp = doc.data() as User;
+         
+    })
+    temp.state = true;
+    return temp;
+})
+
+type IUpdateUserInfo = {
+    uid:string,
+    user:User,
+}
+export const UpdateUserInfo = createAsyncThunk('auth/updateuser', async ({uid,user}:IUpdateUserInfo)=> {
+    const userRef = doc(db, "users", uid);
+   await updateDoc(userRef,user);
+   return user
+})
 
 export const authSlice = createSlice({
     name:"auth",
     initialState,
     reducers:{
-        SetUser: (state,action:PayloadAction<User>) => {
-            state.email = action.payload.email;
-            state.uid = action.payload.uid;
-            state.photoURL = action.payload.photoURL;
-
-        },
-        Login: (state,action:PayloadAction<Auth>) => {
-           return state;
-
-         }
+       
+    },
+    extraReducers: (builder) => {
+           builder.addCase(getUserInfo.fulfilled,(state,action) => {
+                 
+                 return action.payload;
+           })
+           builder.addCase(UpdateUserInfo.fulfilled,(state,action) => {
+            return action.payload;
+      })
     }
 })
 
 
-export const {SetUser,Login} = authSlice.actions;
+export const {} = authSlice.actions;
 
 export default authSlice.reducer;

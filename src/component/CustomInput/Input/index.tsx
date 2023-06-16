@@ -1,7 +1,7 @@
 import React , {ChangeEvent, useState} from 'react'
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
-import { eye } from '../../../assets/svg';
+import { eye , date} from '../../../assets/svg';
 
 let cx = classNames.bind(styles);
 
@@ -26,7 +26,7 @@ const Input = ({className , variant , icon , label , onChange , outline , defaul
     <div className={cx('input-wrapper')}>
     <label>{label}</label>
      <div className={cx('outline')} style={{border:`1px solid ${outline}`}}>
-      <input type={pwd} className={cx('input',className)} onChange={onChange} ></input>
+      <input type={pwd} className={cx('input',className)} onChange={onChange} defaultValue={defaultValue} ></input>
     </div>
     <img src={eye} className={cx('icon')} onClick={handleVisible}/>
     </div>
@@ -46,6 +46,16 @@ const Input = ({className , variant , icon , label , onChange , outline , defaul
       <input disabled className={cx('input',className,'blocked')} defaultValue={defaultValue}></input>
       </div>
       </div>
+   )
+  }else if(variant=='date'){
+    return (
+     <div className={cx('input-wrapper')}>
+    <label>{label}</label>
+     <div className={cx('outline')} style={{border:`1px solid ${outline}`}}>
+      <input type='text' className={cx('input',className)} onChange={onChange} ></input>
+    </div>
+    <img src={date} className={cx('icon-bd')} />
+    </div>
    )
   }
   else{
